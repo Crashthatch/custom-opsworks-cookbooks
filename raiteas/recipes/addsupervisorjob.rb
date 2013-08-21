@@ -1,3 +1,4 @@
+include_recipe 'python'
 include_recipe 'supervisor'
   
 supervisor_service "pythonserver" do
