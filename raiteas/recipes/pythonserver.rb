@@ -1,6 +1,10 @@
 include_recipe 'deploy'
 
 node[:deploy].each do |application, deploy|
+  if deploy[:application_type] != 'raiteas_pythonserver'
+    Chef::Log.debug("Skipping raiteas::pythonserver for application #{application} as it is not application raiteas_pythonserver")
+    next
+  end
 
   opsworks_deploy_dir do
     user deploy[:user]
@@ -16,5 +20,11 @@ node[:deploy].each do |application, deploy|
   opsworks_nodejs do
     deploy_data deploy
     app application
+  end
+  
+  execute "run pip install for #{application}" do
+    cwd deploy[:deploy_to]
+    command "pip install requirements.txt"
+    action :nothing
   end
 end
