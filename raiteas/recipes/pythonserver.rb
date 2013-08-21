@@ -1,7 +1,7 @@
 include_recipe 'deploy'
 
 node[:deploy].each do |application, deploy|
-  if deploy[:application_type] != 'raiteas_pythonserver'
+  if deploy[:application] != 'raiteas_pythonserver'
     Chef::Log.debug("Skipping raiteas::pythonserver for application #{application} as it is not application raiteas_pythonserver")
     next
   end
