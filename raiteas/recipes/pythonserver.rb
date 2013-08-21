@@ -24,7 +24,7 @@ node[:deploy].each do |application, deploy|
   
   execute "run pip install for #{application}" do
     cwd deploy[:deploy_to]
-    command "pip install requirements.txt"
+    command "pip install -r requirements.txt"
     action :run
   end
 end
