@@ -5,3 +5,4 @@ recipe "raiteas::pythonserver", "Deploy the Python SVG server"
 recipe "raiteas::addsupervisorjob", "Create a supervisor job"
 
 depends "deploy"
+depends "supervisor"
