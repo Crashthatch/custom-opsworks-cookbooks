@@ -1,7 +1,4 @@
-include_recipe 'python'
-include_recipe 'supervisor'
-  
-supervisor_service "pythonserver" do
+ruby supervisor_service "pythonserver" do
   command "python /srv/www/raiteas_pythonserver/current/app/app.py runserver live"
   numprocs 1
   stdout_logfile "~/python.out"
