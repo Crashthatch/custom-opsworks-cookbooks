@@ -9,5 +9,5 @@ supervisor_service "pythonserver" do
   autostart true
   autorestart true
   user "ubuntu"
-  action :enable
+  action [:enable, :start]
 end
